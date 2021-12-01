@@ -102,7 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer>
                     ),
                     InkWell(
                       onTap: () {
-                        navigationController.navigateToNamed(myAppointments);
+
                       },
                       child: Row(
                         children: [

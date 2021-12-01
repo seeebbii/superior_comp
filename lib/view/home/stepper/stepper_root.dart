@@ -26,51 +26,48 @@ class _StepperRootState extends State<StepperRoot> with AutomaticKeepAliveClient
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: GestureDetector(
-        onPanUpdate: (details) {
-          // Swiping in right direction.
-          if (details.delta.dx > 0) {
-            widget.animation!();
-          }
-        },
-        child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                widget.animation!();
-              },
+    return GestureDetector(
+      onPanUpdate: (details) {
+        // Swiping in right direction.
+        if (details.delta.dx > 0) {
+          widget.animation!();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black,
             ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.notifications_active),
-                color: Colors.black,
-                onPressed: () {
-                },
-              )
-            ],
+            onPressed: () {
+              widget.animation!();
+            },
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: PageView(
-                  children: widgetList,
-                  // controller: stepperController.pageViewController,
-                  physics: const NeverScrollableScrollPhysics(),
-                ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.notifications_active),
+              color: Colors.black,
+              onPressed: () {
+              },
+            )
+          ],
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                children: widgetList,
+                // controller: stepperController.pageViewController,
+                physics: const NeverScrollableScrollPhysics(),
               ),
-              Container(
-                height: 0.06.sh,
-                padding: EdgeInsets.symmetric(vertical: 0.01.sh),
-                child: Text(""),
-              ),
-        ],),)),
-    );
+            ),
+            Container(
+              height: 0.06.sh,
+              padding: EdgeInsets.symmetric(vertical: 0.01.sh),
+              child: SizedBox.shrink()
+            ),
+      ],),));
   }
 
   Widget _buildStepperWidget() {

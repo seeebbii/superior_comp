@@ -10,6 +10,9 @@ class ImagePaths {
   static const String google = "$ICON_PATH/google.png";
   static const String backArrow = "$ICON_PATH/back_arrow.png";
 
+
+  static const String shopkoLogo = "$ICON_PATH/shopko.png";
+
   static const String exteriorCar = "$ICON_PATH/exterior_car.png";
   static const String interiorSeat = "$ICON_PATH/interior_seat.png";
 

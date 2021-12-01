@@ -5,12 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:superior_comp/app/constant/controllers.dart';
 import 'package:superior_comp/app/constant/image_paths.dart';
 import 'package:superior_comp/app/constant/imp.dart';
-import 'package:superior_comp/app/router/router_generator.dart';
 import 'package:superior_comp/app/utils/colors.dart';
 import 'package:superior_comp/view/components/auth_button.dart';
 import 'package:superior_comp/view/components/auth_social_button.dart';
 import 'package:superior_comp/view/components/auth_textfield.dart';
-
 
 class AuthLoginScreen extends StatefulWidget {
   const AuthLoginScreen({Key? key}) : super(key: key);
@@ -52,21 +50,25 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                     onTap: () => navigationController.goBack(),
                     child: Image.asset(
                       ImagePaths.backArrow,
-                      color: primaryColor,
                     )),
               ),
               Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 0.1.sh,
+                        height: 0.18.sh,
                       ),
-                      Image.asset(ImagePaths.shopkoLogo),
+                      Text('Welcome',
+                          style: Theme.of(context).textTheme.headline1),
+                      Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: Text('Login to your account',
+                              style: Theme.of(context).textTheme.headline2)),
                       SizedBox(
-                        height: 0.01.sh,
+                        height: 0.12.sh,
                       ),
                       _buildEmailField(),
                       _buildPasswordField(),
@@ -74,13 +76,14 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                         height: 0.03.sh,
                       ),
                       _buildLoginButton(),
-
+                      SizedBox(
+                        height: 0.02.sh,
+                      ),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 0.03.sh),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -90,7 +93,13 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                               endIndent: 0.05.sw,
                             ),
                           ),
-                          _buildSignUpText(),
+                          Text(
+                            "or sign in with",
+                            style:
+                                Theme.of(context).textTheme.headline2?.copyWith(
+                                      color: Colors.black,
+                                    ),
+                          ),
                           Expanded(
                             child: Divider(
                               indent: 0.05.sw,
@@ -99,8 +108,19 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                           ),
                         ],
                       ),
-
-
+                      SizedBox(
+                        height: 0.02.sh,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _buildFacebookButton(),
+                          _buildGoogleButton()
+                        ],
+                      ),
+                      SizedBox(
+                        height: 0.08.sh,
+                      ),
                     ],
                   ),
                 ],
@@ -177,11 +197,37 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
     );
   }
 
+  Widget _buildFacebookButton() {
+    return AuthSocialButton(
+      onPressed: () {
+        debugPrint("Facebook pressed");
+      },
+      socialName: 'Facebook',
+      imagePath: ImagePaths.facebookIcon,
+      backGroundColor: facebookColor,
+      textColor: Colors.white,
+      elevation: 0,
+    );
+  }
+
+  Widget _buildGoogleButton() {
+    return AuthSocialButton(
+      onPressed: () {
+        debugPrint("Google pressed");
+      },
+      socialName: 'Google',
+      imagePath: ImagePaths.google,
+      backGroundColor: googleColor,
+      textColor: Colors.black54,
+      elevation: 0,
+    );
+  }
+
   Widget _buildSignUpText() {
     return RichText(
       text: TextSpan(children: [
         TextSpan(
-          text: "Don't have an account? ",
+          text: "Dont't have an account? ",
           style: Theme.of(context).textTheme.headline2?.copyWith(
                 color: Colors.black,
               ),
@@ -190,10 +236,10 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
           text: "Signup",
           recognizer: TapGestureRecognizer()
             ..onTap = () {
-             navigationController.navigateToNamed(authSignUpScreen);
+              print("SIGNUP TAPPED");
             },
           style: Theme.of(context).textTheme.headline2?.copyWith(
-              color: primaryColor, decoration: TextDecoration.underline, fontWeight: FontWeight.bold),
+              color: Colors.red, decoration: TextDecoration.underline),
         ),
       ]),
     );

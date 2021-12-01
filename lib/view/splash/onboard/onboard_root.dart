@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:superior_comp/app/constant/image_paths.dart';
+import 'package:superior_comp/app/utils/colors.dart';
 
 
 import 'onboard_welcome_1.dart';
@@ -41,7 +42,7 @@ class _OnBoardRootState extends State<OnBoardRoot>
           margin: const EdgeInsets.symmetric(horizontal: 1.5),
           child: Image.asset(ImagePaths.sliderRedDot,
               scale: 0.65.sp,
-              color: currentIndex == index ? Colors.red : Colors.white,
+              color: currentIndex == index ? primaryColor: Colors.white,
               width: 10.sp,
               height: 10.sp)),
     );

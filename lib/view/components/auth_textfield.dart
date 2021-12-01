@@ -12,6 +12,7 @@ class AuthTextField extends StatelessWidget {
   dynamic validator;
   TextInputAction action;
   TextInputType keyType;
+  final bool enabled;
 
   Widget suffixIcon;
 
@@ -24,7 +25,7 @@ class AuthTextField extends StatelessWidget {
     required this.action,
     required this.keyType,
     required this.suffixIcon,
-    this.hintText}) : super(key: key);
+    this.hintText, required this.enabled}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +58,7 @@ class AuthTextField extends StatelessWidget {
         obscureText: obSecureText,
         cursorColor: Colors.red.shade400,
         validator: validator,
+        enabled: enabled,
       ),
     );
   }

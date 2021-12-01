@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:superior_comp/view/authentication/auth_login_screen.dart';
 import 'package:superior_comp/view/drawer/custom_drawer.dart';
+import 'package:superior_comp/view/home/authentication/auth_signup_screen.dart';
 import 'package:superior_comp/view/home/stepper/stepper_root.dart';
 import 'package:superior_comp/view/splash/main_splash_screen.dart';
 import 'package:superior_comp/view/splash/onboard/onboard_root.dart';
@@ -21,28 +22,12 @@ const String onBoardWelcome3 = '/on-board-welcome-3';
 
 // AUTH
 const String authLoginScreen = '/login-screen';
+const String authSignUpScreen = '/signup-screen';
 
 //  STEPPER ROOT
 const String stepperRoot = '/stepper-root';
 
-// HOME
-const String chooseVehicleType = '/choose-vehicle-type';
-const String exteriorScreen = '/exterior-screen';
-const String interiorScreen = '/interior-screen';
-const String filmScreen = '/film-screen';
-const String paintProtectionScreen = '/paint-protection-screen';
-const String productScreen = '/product-screen';
-const String maintenanceScreen = '/maintenance-screen';
-const String requestScreen = '/request-screen';
-const String paymentMethodScreen = '/payment-method-screen';
-
-//Profile
-const String personalInfo='/personal-info';
-
-
 const String customDrawer='/custom-drawer';
-const String notificationScreen='/notification-screen';
-const String myAppointments='/my-appointments';
 
 
 // ignore: todo
@@ -76,6 +61,9 @@ class RouteGenerator {
 
       case authLoginScreen:
         return _getPageRoute(const AuthLoginScreen());
+
+        case authSignUpScreen:
+        return _getPageRoute(const AuthSignUpScreen());
 
         case customDrawer:
         return _getPageRoute(const CustomDrawer());

@@ -28,7 +28,7 @@ const red = Color(0xFFFF6054);
 
 const backgroundCoffee = Color(0xffe0e0e1);
 const bord = Color(0xffd5dde0);
-const primaryColor = Colors.red;
+const primaryColor = Color(0xFFEF81EB);
 
 // AUTH TEXT FIELD CONTAINER
 Color authTextFieldContainerColor = Colors.grey.shade200;

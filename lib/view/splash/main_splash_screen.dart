@@ -22,7 +22,7 @@ class _MainSplashScreenState extends State<MainSplashScreen>
   void initState() {
     super.initState();
     // TODO ::  we will later navigate to auth decider
-    Timer(const Duration(seconds: 4),
+    Timer(const Duration(seconds: 3),
         () => navigationController.getOffAll(onBoardRoot));
   }
 
@@ -43,34 +43,11 @@ class _MainSplashScreenState extends State<MainSplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(ImagePaths.mainSplash),
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.high),
-          ),
-          child: ScaleTransition(
-            scale: _animation,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Center(
-                  child: Image.asset(
-                    ImagePaths.ultraShineLogo,
-                    height: 0.9.sh,
-                    // filterQuality: FilterQuality.high,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        // width: double.infinity,
+        child: Image.asset(ImagePaths.shopkoLogo),
       ),
     );
   }
