@@ -15,6 +15,11 @@ const blue = Color(0xFF1ac0dc);
 const grey = Color(0xFF828282);
 
 const lightestGrey = Color(0xFFEBECF5);
+
+const snackBarError =  Colors.red;
+const snackBarSuccess =  Colors.green;
+
+
 const unActiveButtonSilverColor = Color(0xFFEBECF5);
 
 const lightestRedColor = Color(0xFFFAE1E1);

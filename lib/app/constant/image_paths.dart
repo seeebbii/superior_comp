@@ -29,9 +29,9 @@ class ImagePaths {
 
 // TODO :: IMAGES
   static const String mainSplash = "$IMAGES_PATH/splash.png";
-  static const String onBoardWelcome1 = "$IMAGES_PATH/onboard-welcome1.png";
+  static const String onBoardWelcome1 = "$IMAGES_PATH/onboard-welcome1.jpg";
   static const String onBoardWelcome2 = "$IMAGES_PATH/onboard-welcome2.png";
-  static const String onBoardWelcome3 = "$IMAGES_PATH/onboard-welcome3.png";
+  static const String onBoardWelcome3 = "$IMAGES_PATH/onboard-welcome3.jpeg";
 
   static const String typeJeep = "$IMAGES_PATH/jeep.png";
   static const String typeLarge = "$IMAGES_PATH/large.png";

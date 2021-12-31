@@ -2,11 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:superior_comp/app/constant/auth_exception_handling.dart';
 import 'package:superior_comp/app/constant/controllers.dart';
+import 'package:superior_comp/app/constant/custom_snackbar.dart';
 import 'package:superior_comp/app/constant/image_paths.dart';
 import 'package:superior_comp/app/constant/imp.dart';
 import 'package:superior_comp/app/router/router_generator.dart';
 import 'package:superior_comp/app/utils/colors.dart';
+import 'package:superior_comp/view/authentication/auth_controller.dart';
 import 'package:superior_comp/view/components/auth_button.dart';
 import 'package:superior_comp/view/components/auth_social_button.dart';
 import 'package:superior_comp/view/components/auth_textfield.dart';
@@ -25,12 +29,27 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
   final passwordController = TextEditingController();
   bool obSecureText = true;
 
+  final authController = Get.put(AuthController());
+
   void _trySubmit() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
     if (isValid) {
       // CALL LOGIN METHOD
+      final status =
+      await authController.loginUser(emailController.text.trim(), passwordController.text);
+      if (status == AuthResultStatus.successful) {
+        navigationController.getOffAll(customDrawer);
+        CustomSnackBar.showSnackBar(
+            title: "Login Successful",
+            message: '',
+            backgroundColor: snackBarSuccess);
+      } else {
+        final errorMsg = AuthExceptionHandler.generateExceptionMessage(status);
+        CustomSnackBar.showSnackBar(
+            title: errorMsg, message: '', backgroundColor: snackBarError);
+      }
 
     }
   }
@@ -122,7 +141,7 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
         containerBoxColor: authTextFieldContainerColor,
         hintText: 'Email',
         suffixIcon: const SizedBox.shrink(),
-        keyType: TextInputType.emailAddress,
+        keyType: TextInputType.name,
         validator: (str) {
           if (str == null || str == '') {
             return "Email is required";
